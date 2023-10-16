@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Rating System</title>
+    <style>
+        body {
+            background-color: #EBEBEB;
+            margin-top: 10vh;
+            margin-left: 50vh;
+        }
+
+        .rating {
+            font-size: 30px;
+        }
+
+        .rating span {
+            cursor: pointer;
+            display: inline-block;
+            padding: 5px;
+            margin: 0 2px;
+        }
+
+        .rating span:hover {
+            color: rgb(245, 169, 7);
+        }
+
+        .rating span.active {
+            color: gold;
+        }
+
+        #rating-text {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h2 style="margin-top: 40px;">jQuery simple star rating example</h2>
+        <h3 style="margin-top: 80px; color: green;">Rate our product :-</h3>
+    </div>
+    <div class="rating" id="stars">
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+    </div>
+    <p id="rating-text">Select a rating:</p>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.star').click(function () {
+                var index = $(this).index();
+                $('.star').removeClass('active');
+                for (var i = 0; i <= index; i++) {
+                    $('.star:eq(' + i + ')').addClass('active');
+                }
+
+                var ratingText = '';
+                switch (index + 1) {
+                    case 1:
+                        ratingText = 'Terrible';
+                        break;
+                    case 2:
+                        ratingText = 'Poor';
+                        break;
+                    case 3:
+                        ratingText = 'OK';
+                        break;
+                    case 4:
+                        ratingText = 'Good';
+                        break;
+                    case 5:
+                        ratingText = 'Excellent';
+                        break;
+                    default:
+                        ratingText = '';
+                }
+
+                $('#rating-text').text('Rating: ' + ratingText);
+            });
+        });
+    </script>
+</body>
+
+</html>
